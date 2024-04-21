@@ -1,12 +1,15 @@
-
+import { CountryProvider, restCountryContext } from './store/userContext'
 import './App.css'
+import User from './component/User'
+
 
 function App() {
 
+
   return (
-    <>
-    <div>Garv SAHAH</div>
-    </>
+    <CountryProvider >
+      <User />
+    </CountryProvider>
   )
 }
 
