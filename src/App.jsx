@@ -1,6 +1,8 @@
 import { CountryProvider, restCountryContext } from './store/userContext'
 import './App.css'
-import User from './component/User'
+import SearchCountry from './component/SearchCountry'
+import Country from './component/Country'
+
 
 
 function App() {
@@ -8,7 +10,8 @@ function App() {
 
   return (
     <CountryProvider >
-      <User />
+      <SearchCountry />
+      <Country />
     </CountryProvider>
   )
 }

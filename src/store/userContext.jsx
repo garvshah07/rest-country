@@ -7,6 +7,7 @@ const restCountryContext = createContext()
 const CountryProvider = ({ children }) => {
 
     const [apiData, setApiData] = useState([])
+    const [filteredCountries, setFilteredCountries] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,6 +19,12 @@ const CountryProvider = ({ children }) => {
                 console.error('Error fetching data:', error);
             }
         };
+        const filtered = apiData.filter((country) =>
+            country.name.common.toLowerCase().startsWith(inputValue.toLowerCase())
+        );
+
+
+        setFilteredCountries(filtered);
 
         fetchData();
     }, []);
@@ -27,7 +34,7 @@ const CountryProvider = ({ children }) => {
 
 
     return (
-        <restCountryContext.Provider value={apiData}>
+        <restCountryContext.Provider value={{ apiData, setFilteredCountries, filteredCountries, setApiData }} >
             {children}
         </restCountryContext.Provider>
 
